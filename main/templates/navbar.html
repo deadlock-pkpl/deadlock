@@ -1,0 +1,42 @@
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<nav class="w-full bg-white border-b border-stone-100 px-6 py-4" style="font-family: 'DM Sans', sans-serif;">
+  <div class="max-w-2xl mx-auto flex items-center justify-between">
+
+    <!-- Logo / Brand -->
+    <a href="/" class="flex items-center gap-2 no-underline">
+      <div class="w-7 h-7 rounded-lg bg-stone-800 flex items-center justify-center">
+        <span class="text-white text-[11px]" style="font-family:'DM Serif Display',serif;font-style:italic;">K4</span>
+      </div>
+      <span class="text-[15px] font-medium text-stone-800 tracking-tight">Kelompok 4</span>
+    </a>
+
+    <!-- Nav Links (desktop) -->
+    <div class="hidden sm:flex items-center gap-6">
+      <a href="/" class="text-[13px] text-stone-800 font-medium border-b border-stone-800 pb-0.5 no-underline">Beranda</a>
+      <a href="/font" class="text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline">Font</a>
+      <a href="/warna" class="text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline">Warna</a>
+      <a href="/logout" class="text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline">Akun</a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button
+      onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+      class="sm:hidden w-8 h-8 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-stone-50 transition-colors"
+      aria-label="Toggle menu"
+    >
+      <span class="w-4 h-px bg-stone-700 block"></span>
+      <span class="w-4 h-px bg-stone-700 block"></span>
+      <span class="w-3 h-px bg-stone-700 block self-end"></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden sm:hidden max-w-lg mx-auto pt-4 pb-2 flex flex-col gap-1">
+    <a href="/" class="text-[13px] text-stone-800 font-medium px-2 py-2 rounded-lg bg-stone-50 no-underline">Beranda</a>
+    <a href="/font" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Font</a>
+    <a href="/warna" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Warna</a>
+    <a href="/logout" class="text-[13px] text-red-400 px-2 py-2 rounded-lg hover:bg-red-50 transition-colors no-underline">Logout</a>
+  </div>
+</nav>
