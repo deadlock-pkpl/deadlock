@@ -186,7 +186,59 @@
 
   </div>
 
+  <!-- Warna Button Section -->
+  {% if user.is_authenticated %}
+  <div class="mt-16 flex justify-center">
+    <button
+      id="warnaBtn"
+      onclick="changeBackgroundColor()"
+      class="px-8 py-3 bg-stone-800 text-white text-[15px] font-medium rounded-lg hover:bg-stone-700 active:bg-stone-900 transition-colors duration-200 border border-stone-800 hover:border-stone-700"
+      style="font-family: 'DM Sans', sans-serif;"
+      aria-label="Ubah warna latar belakang"
+    >
+      Warna
+    </button>
+  </div>
+  {% else %}
+  <div class="mt-16 flex justify-center text-center">
+    <p class="text-sm text-stone-400">Silakan login untuk mengakses fitur ubah warna</p>
+  </div>
+  {% endif %}
+
 </main>
+
+<script>
+  // Array of beautiful colors to choose from
+  const colors = [
+    '#fef2f2', // rose-50
+    '#fef3c7', // amber-50
+    '#dcfce7', // green-50
+    '#cffafe', // cyan-50
+    '#e0e7ff', // indigo-50
+    '#fae8ff', // fuchsia-50
+    '#f0fdf4', // green-50 (light)
+    '#fdf2f8', // pink-50
+    '#f5f3ff', // violet-50
+    '#fffbeb', // amber-50 (light)
+    '#f0fdf4', // lime-50
+    '#fdf8ff', // purple-50
+  ];
+
+  function changeBackgroundColor() {
+    // Get random color from the array
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Apply color to body background
+    document.body.style.backgroundColor = randomColor;
+    
+    // Optional: Add a subtle animation effect
+    const btn = document.getElementById('warnaBtn');
+    btn.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      btn.style.transform = 'scale(1)';
+    }, 100);
+  }
+</script>
 
 {% include 'footer.html' %}
 {% endblock %}
