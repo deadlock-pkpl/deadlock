@@ -13,10 +13,25 @@
 
     <!-- Nav Links (desktop) -->
     <div class="hidden sm:flex items-center gap-6">
-      <a href="/" class="text-[13px] text-stone-800 font-medium border-b border-stone-800 pb-0.5 no-underline">Beranda</a>
-      <a href="/font" class="text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline">Font</a>
-      <a href="/warna" class="text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline">Warna</a>
-      <a href="/logout" class="text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline">Akun</a>
+      <a href="/" class="text-[13px] text-stone-800 font-medium no-underline">Beranda</a>
+
+      <!-- Login User (Authenticated) -->
+      {% if user.is_authenticated %}
+        {% if is_member %}
+          <a href="{% url 'main:change_font' %}" class="text-[13px] text-stone-400 hover:text-stone-700 no-underline">Ubah Font</a>
+          <a href="{% url 'main:change_colour' %}" class="text-[13px] text-stone-400 hover:text-stone-700 no-underline">Ubah Warna</a>
+        {% endif %}
+        
+        <form action="{% url 'main:logout' %}" method="post" class="inline">
+          {% csrf_token %}
+          <button type="submit" class="text-[13px] text-red-400 hover:text-red-600 font-medium">Logout</button>
+        </form>
+      {% else %}
+        <a href="{% url 'main:google_login' %}" class="flex items-center gap-2 px-3 py-1.5 bg-white border border-stone-200 rounded-md text-[13px] font-medium text-stone-700 hover:bg-stone-50 transition-all no-underline">
+          <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" width="16" alt="G">
+          Login with Google
+        </a>
+      {% endif %}
     </div>
 
     <!-- Mobile Hamburger -->
@@ -35,8 +50,25 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden sm:hidden max-w-lg mx-auto pt-4 pb-2 flex flex-col gap-1">
     <a href="/" class="text-[13px] text-stone-800 font-medium px-2 py-2 rounded-lg bg-stone-50 no-underline">Beranda</a>
-    <a href="/font" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Font</a>
-    <a href="/warna" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Warna</a>
-    <a href="/logout" class="text-[13px] text-red-400 px-2 py-2 rounded-lg hover:bg-red-50 transition-colors no-underline">Logout</a>
+
+    {% if user.is_authenticated %}
+        {% if is_member %}
+            <a href="{% url 'main:change_font' %}" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Ubah Font</a>
+            <a href="{% url 'main:change_colour' %}" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Uubah Warna</a>
+        {% endif %}
+
+        <form action="{% url 'main:logout' %}" method="post" class="w-full">
+            {% csrf_token %}
+            <button type="submit" class="w-full text-left text-[13px] text-red-400 px-2 py-2 rounded-lg hover:bg-red-50 transition-colors">
+                Logout ({{ user.email }})
+            </button>
+        </form>
+
+    {% else %}
+        <a href="{% url 'main:google_login' %}" class="flex items-center gap-2 text-[13px] text-stone-600 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">
+            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" width="14" alt="G">
+            Login with Google
+        </a>
+    {% endif %}
   </div>
 </nav>
