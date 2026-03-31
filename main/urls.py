@@ -1,9 +1,13 @@
 from django.urls import path
-from main.views import show_main, show_warna
+from . import views
 
 app_name = 'main'
 
 urlpatterns = [
-    path('', show_main, name='show_main'),
-    path('warna/', show_warna, name='show_warna'),
+    path('', views.show_main, name='show_main'),
+    path('auth/login/', views.start_google_login, name='google_login'),
+    path('auth/callback/', views.google_callback, name='google_callback'),
+    path('auth/logout/', views.logout_view, name='logout'),
+    path('auth/warna/', views.change_colour, name='change_colour'),
+    path('auth/font/', views.change_font, name='change_font'),
 ]
