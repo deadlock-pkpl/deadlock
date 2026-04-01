@@ -54,7 +54,7 @@
     {% if user.is_authenticated %}
         {% if is_member %}
             <a href="{% url 'main:change_font' %}" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Ubah Font</a>
-            <a href="{% url 'main:change_colour' %}" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Uubah Warna</a>
+            <a href="{% url 'main:change_colour' %}" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Ubah Warna</a>
         {% endif %}
 
         <form action="{% url 'main:logout' %}" method="post" class="w-full">
@@ -72,3 +72,72 @@
     {% endif %}
   </div>
 </nav>
+
+<script>
+  // Function to set active nav link
+  function setActiveNavLink() {
+    // Get current path without trailing slash
+    let currentPath = window.location.pathname;
+    
+    // Remove trailing slash for comparison (except for root)
+    if (currentPath !== '/' && currentPath.endsWith('/')) {
+      currentPath = currentPath.slice(0, -1);
+    }
+    
+    // Desktop nav links
+    const desktopLinks = document.querySelectorAll('.nav-link');
+    desktopLinks.forEach(link => {
+      let linkPath = link.getAttribute('data-path');
+      
+      // Remove trailing slash from linkPath too
+      if (linkPath !== '/' && linkPath.endsWith('/')) {
+        linkPath = linkPath.slice(0, -1);
+      }
+      
+      const isActive = currentPath === linkPath;
+      
+      if (isActive) {
+        // Active state
+        link.classList.remove('text-stone-400', 'hover:text-stone-700');
+        link.classList.add('text-stone-800', 'font-medium', 'border-b', 'border-stone-800', 'pb-0.5');
+      } else {
+        // Inactive state
+        link.classList.remove('text-stone-800', 'font-medium', 'border-b', 'border-stone-800', 'pb-0.5');
+        link.classList.add('text-stone-400', 'hover:text-stone-700');
+      }
+    });
+    
+    // Mobile nav links
+    const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+    mobileLinks.forEach(link => {
+      let linkPath = link.getAttribute('data-path');
+      
+      // Remove trailing slash from linkPath too
+      if (linkPath !== '/' && linkPath.endsWith('/')) {
+        linkPath = linkPath.slice(0, -1);
+      }
+      
+      const isActive = currentPath === linkPath;
+      
+      if (isActive) {
+        // Active state
+        link.classList.remove('text-stone-500', 'text-red-400');
+        link.classList.add('text-stone-800', 'font-medium', 'bg-stone-50');
+      } else {
+        // Inactive state
+        link.classList.remove('text-stone-800', 'font-medium', 'bg-stone-50');
+        if (linkPath === '/logout') {
+          link.classList.add('text-red-400');
+        } else {
+          link.classList.add('text-stone-500');
+        }
+      }
+    });
+  }
+  
+  // Set active link on page load
+  document.addEventListener('DOMContentLoaded', setActiveNavLink);
+  
+  // Also update when back/forward buttons are used
+  window.addEventListener('popstate', setActiveNavLink);
+</script>

@@ -8,6 +8,6 @@ urlpatterns = [
     path('auth/login/', views.start_google_login, name='google_login'),
     path('auth/callback/', views.google_callback, name='google_callback'),
     path('auth/logout/', views.logout_view, name='logout'),
-    path('auth/colour/', views.change_colour, name='change_colour'),
+    path('auth/warna/', views.change_colour, name='change_colour'),
     path('auth/font/', views.change_font, name='change_font'),
 ]
