@@ -133,6 +133,7 @@ GROUP_MEMBERS = [
     "rayyan.emir@ui.ac.id",
     "philo.pradipta41@ui.ac.id",
     "raihan.maulana41@ui.ac.id",
+    "zakiy.nashrudin@ui.ac.id",
 ]
 
 # deadlock/settings.py
