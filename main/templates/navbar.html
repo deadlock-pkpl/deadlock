@@ -13,13 +13,16 @@
 
     <!-- Nav Links (desktop) -->
     <div class="hidden sm:flex items-center gap-6">
-      <a href="/" class="text-[13px] text-stone-800 font-medium no-underline">Beranda</a>
+      <!-- Beranda: Sekarang pake class nav-link dan data-path -->
+      <a href="/" class="nav-link text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline" data-path="/">Beranda</a>
 
-      <!-- Login User (Authenticated) -->
       {% if user.is_authenticated %}
         {% if is_member %}
-          <a href="{% url 'main:change_font' %}" class="text-[13px] text-stone-400 hover:text-stone-700 no-underline">Ubah Font</a>
-          <a href="{% url 'main:change_colour' %}" class="text-[13px] text-stone-400 hover:text-stone-700 no-underline">Ubah Warna</a>
+          <!-- Font: Tambahkan class nav-link dan data-path -->
+          <a href="{% url 'main:change_font' %}" class="nav-link text-[13px] text-stone-400 hover:text-stone-700 no-underline" data-path="{% url 'main:change_font' %}">Ubah Font</a>
+          
+          <!-- Warna: Tambahkan class nav-link dan data-path -->
+          <a href="{% url 'main:change_colour' %}" class="nav-link text-[13px] text-stone-400 hover:text-stone-700 no-underline" data-path="{% url 'main:change_colour' %}">Ubah Warna</a>
         {% endif %}
         
         <form action="{% url 'main:logout' %}" method="post" class="inline">
@@ -49,23 +52,22 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden sm:hidden max-w-lg mx-auto pt-4 pb-2 flex flex-col gap-1">
-    <a href="/" class="text-[13px] text-stone-800 font-medium px-2 py-2 rounded-lg bg-stone-50 no-underline">Beranda</a>
+    <a href="/" class="nav-link-mobile text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline" data-path="/">Beranda</a>
 
     {% if user.is_authenticated %}
         {% if is_member %}
-            <a href="{% url 'main:change_font' %}" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Ubah Font</a>
-            <a href="{% url 'main:change_colour' %}" class="text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">Ubah Warna</a>
+            <a href="{% url 'main:change_font' %}" class="nav-link-mobile text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline" data-path="{% url 'main:change_font' %}">Ubah Font</a>
+            <a href="{% url 'main:change_colour' %}" class="nav-link-mobile text-[13px] text-stone-500 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline" data-path="{% url 'main:change_colour' %}">Ubah Warna</a>
         {% endif %}
 
         <form action="{% url 'main:logout' %}" method="post" class="w-full">
             {% csrf_token %}
             <button type="submit" class="w-full text-left text-[13px] text-red-400 px-2 py-2 rounded-lg hover:bg-red-50 transition-colors">
-                Logout ({{ user.email }})
+                Logout
             </button>
         </form>
-
     {% else %}
-        <a href="{% url 'main:google_login' %}" class="flex items-center gap-2 text-[13px] text-stone-600 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline">
+        <a href="{% url 'main:google_login' %}" class="nav-link-mobile flex items-center gap-2 text-[13px] text-stone-600 px-2 py-2 rounded-lg hover:bg-stone-50 transition-colors no-underline" data-path="{% url 'main:google_login' %}">
             <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" width="14" alt="G">
             Login with Google
         </a>
@@ -74,70 +76,49 @@
 </nav>
 
 <script>
-  // Function to set active nav link
   function setActiveNavLink() {
-    // Get current path without trailing slash
     let currentPath = window.location.pathname;
     
-    // Remove trailing slash for comparison (except for root)
+    // Normalisasi path: hapus slash di akhir kecuali untuk root '/'
     if (currentPath !== '/' && currentPath.endsWith('/')) {
       currentPath = currentPath.slice(0, -1);
     }
     
-    // Desktop nav links
+    // Desktop Nav
     const desktopLinks = document.querySelectorAll('.nav-link');
     desktopLinks.forEach(link => {
       let linkPath = link.getAttribute('data-path');
-      
-      // Remove trailing slash from linkPath too
       if (linkPath !== '/' && linkPath.endsWith('/')) {
         linkPath = linkPath.slice(0, -1);
       }
       
-      const isActive = currentPath === linkPath;
-      
-      if (isActive) {
-        // Active state
+      if (currentPath === linkPath) {
         link.classList.remove('text-stone-400', 'hover:text-stone-700');
         link.classList.add('text-stone-800', 'font-medium', 'border-b', 'border-stone-800', 'pb-0.5');
       } else {
-        // Inactive state
         link.classList.remove('text-stone-800', 'font-medium', 'border-b', 'border-stone-800', 'pb-0.5');
         link.classList.add('text-stone-400', 'hover:text-stone-700');
       }
     });
     
-    // Mobile nav links
+    // Mobile Nav
     const mobileLinks = document.querySelectorAll('.nav-link-mobile');
     mobileLinks.forEach(link => {
       let linkPath = link.getAttribute('data-path');
-      
-      // Remove trailing slash from linkPath too
       if (linkPath !== '/' && linkPath.endsWith('/')) {
         linkPath = linkPath.slice(0, -1);
       }
       
-      const isActive = currentPath === linkPath;
-      
-      if (isActive) {
-        // Active state
-        link.classList.remove('text-stone-500', 'text-red-400');
+      if (currentPath === linkPath) {
+        link.classList.remove('text-stone-500');
         link.classList.add('text-stone-800', 'font-medium', 'bg-stone-50');
       } else {
-        // Inactive state
         link.classList.remove('text-stone-800', 'font-medium', 'bg-stone-50');
-        if (linkPath === '/logout') {
-          link.classList.add('text-red-400');
-        } else {
-          link.classList.add('text-stone-500');
-        }
+        link.classList.add('text-stone-500');
       }
     });
   }
   
-  // Set active link on page load
   document.addEventListener('DOMContentLoaded', setActiveNavLink);
-  
-  // Also update when back/forward buttons are used
   window.addEventListener('popstate', setActiveNavLink);
 </script>

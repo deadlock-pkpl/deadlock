@@ -3,12 +3,13 @@
 {% block content %}
 {% include 'navbar.html' %}
 
-
-<main class="min-h-screen bg-stone-50 py-16 px-4" style="font-family: 'DM Sans', sans-serif;">
+<!-- 1. Menghapus inline font-family agar bisa berubah otomatis mengikuti pilihan user -->
+<main class="min-h-screen bg-stone-50 py-16 px-4 transition-all duration-500">
 
   <!-- Page Header -->
   <div class="max-w-2xl mx-auto text-center mb-12">
     <p class="text-xs tracking-widest uppercase text-stone-400 mb-2">Kelompok Deadlock · 2026</p>
+    <!-- Judul utama dibiarkan menggunakan DM Serif agar tetap estetik sebagai identitas -->
     <h1 class="text-4xl text-stone-800 mb-2" style="font-family: 'DM Serif Display', serif; font-weight: 400;">
       Biodata Anggota
     </h1>
@@ -19,25 +20,21 @@
   <!-- Cards Container -->
   <div class="max-w-2xl mx-auto flex flex-col gap-4">
 
-    <!-- Card 1 -->
-    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200">
-      <div class="w-20 h-13 rounded-full bg-violet-50 flex items-center justify-center text-violet-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        AR
+    <!-- Card 1: Rayyan Emir Muhammad -->
+    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
+      <div class="w-13 h-13 rounded-full bg-violet-50 flex items-center justify-center text-violet-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
+        RM
       </div>
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Rayyan Emir Muhammad</span>
-          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">22.001</span>
+          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">24.001</span>
         </div>
-        <p class="text-xs text-stone-400 mb-3">Ketua Kelompok</p>
+        <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Ketua Kelompok</p>
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
             <span class="text-[13px] text-stone-700">Jakarta</span>
-          </div>
-          <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Angkatan</span>
-            <span class="text-[13px] text-stone-700">2024</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
@@ -47,30 +44,25 @@
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Machine Learning</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Python</span>
-          <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Data Science</span>
         </div>
       </div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200">
-      <div class="w-20 h-13 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        DS
+    <!-- Card 2: Angga Tri Setiawan -->
+    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
+      <div class="w-13 h-13 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
+        AS
       </div>
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Angga Tri Setiawan</span>
-          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">22.002</span>
+          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">24.002</span>
         </div>
-        <p class="text-xs text-stone-400 mb-3">Anggota</p>
+        <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
             <span class="text-[13px] text-stone-700">Sulawesi Tenggara</span>
-          </div>
-          <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Angkatan</span>
-            <span class="text-[13px] text-stone-700">2024</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
@@ -79,166 +71,97 @@
         </div>
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Frontend</span>
-          <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Backend</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Cybersecurity</span>
         </div>
       </div>
     </div>
 
-    <!-- Card 3 -->
-    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200">
-      <div class="w-20 h-13 rounded-full bg-orange-50 flex items-center justify-center text-orange-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        BH
+    <!-- Card 3: Philo Pradipta -->
+    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
+      <div class="w-13 h-13 rounded-full bg-orange-50 flex items-center justify-center text-orange-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
+        PP
       </div>
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Philo Pradipta Adhi Satriya</span>
-          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">22.003</span>
+          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">24.003</span>
         </div>
-        <p class="text-xs text-stone-400 mb-3">Anggota</p>
+        <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
             <span class="text-[13px] text-stone-700">Surabaya</span>
           </div>
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Angkatan</span>
-            <span class="text-[13px] text-stone-700">2024</span>
-          </div>
-          <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">bagas@mail.com</span>
+            <span class="text-[13px] text-stone-700">philo.pradipta@ui.ac.id</span>
           </div>
         </div>
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Backend</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Node.js</span>
-          <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Database</span>
         </div>
       </div>
     </div>
 
-    <!-- Card 4 -->
-    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200">
-      <div class="w-20 h-13 rounded-full bg-pink-50 flex items-center justify-center text-pink-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        NF
+    <!-- Card 4: Raihan Maulana -->
+    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
+      <div class="w-13 h-13 rounded-full bg-pink-50 flex items-center justify-center text-pink-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
+        RM
       </div>
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Raihan Maulana Heriandry</span>
-          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">22.004</span>
+          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">24.004</span>
         </div>
-        <p class="text-xs text-stone-400 mb-3">Anggota</p>
+        <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
             <span class="text-[13px] text-stone-700">Wonosobo</span>
           </div>
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Angkatan</span>
-            <span class="text-[13px] text-stone-700">2024</span>
-          </div>
-          <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">nadia@mail.com</span>
+            <span class="text-[13px] text-stone-700">raihan.maulana@ui.ac.id</span>
           </div>
         </div>
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Mobile Dev</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Flutter</span>
-          <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Dart</span>
         </div>
       </div>
     </div>
 
-    <!-- Card 5 -->
-    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200">
-      <div class="w-20 h-13 rounded-full bg-sky-50 flex items-center justify-center text-sky-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        RP
+    <!-- Card 5: Zakiy Nashrudin -->
+    <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
+      <div class="w-13 h-13 rounded-full bg-sky-50 flex items-center justify-center text-sky-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
+        ZN
       </div>
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Zakiy Nashrudin Wahid</span>
-          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">22.005</span>
+          <span class="text-[11px] text-stone-400 bg-stone-50 border border-stone-100 rounded-md px-2 py-0.5 whitespace-nowrap flex-shrink-0">24.005</span>
         </div>
-        <p class="text-xs text-stone-400 mb-3">Anggota</p>
+        <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
             <span class="text-[13px] text-stone-700">Semarang</span>
           </div>
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Angkatan</span>
-            <span class="text-[13px] text-stone-700">2024</span>
-          </div>
-          <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">rizky@mail.com</span>
+            <span class="text-[13px] text-stone-700">zakiy.nashrudin@ui.ac.id</span>
           </div>
         </div>
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Cybersecurity</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Linux</span>
-          <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Networking</span>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- Warna Button Section -->
-  {% if user.is_authenticated %}
-  <div class="mt-16 flex justify-center">
-    <button
-      id="warnaBtn"
-      onclick="changeBackgroundColor()"
-      class="px-8 py-3 bg-stone-800 text-white text-[15px] font-medium rounded-lg hover:bg-stone-700 active:bg-stone-900 transition-colors duration-200 border border-stone-800 hover:border-stone-700"
-      style="font-family: 'DM Sans', sans-serif;"
-      aria-label="Ubah warna latar belakang"
-    >
-      Warna
-    </button>
-  </div>
-  {% else %}
-  <div class="mt-16 flex justify-center text-center">
-    <p class="text-sm text-stone-400">Silakan login untuk mengakses fitur ubah warna</p>
-  </div>
-  {% endif %}
-
 </main>
-
-<script>
-  // Array of beautiful colors to choose from
-  const colors = [
-    '#fef2f2', // rose-50
-    '#fef3c7', // amber-50
-    '#dcfce7', // green-50
-    '#cffafe', // cyan-50
-    '#e0e7ff', // indigo-50
-    '#fae8ff', // fuchsia-50
-    '#f0fdf4', // green-50 (light)
-    '#fdf2f8', // pink-50
-    '#f5f3ff', // violet-50
-    '#fffbeb', // amber-50 (light)
-    '#f0fdf4', // lime-50
-    '#fdf8ff', // purple-50
-  ];
-
-  function changeBackgroundColor() {
-    // Get random color from the array
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    
-    // Apply color to body background
-    document.body.style.backgroundColor = randomColor;
-    
-    // Optional: Add a subtle animation effect
-    const btn = document.getElementById('warnaBtn');
-    btn.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      btn.style.transform = 'scale(1)';
-    }, 100);
-  }
-</script>
-
 {% include 'footer.html' %}
 {% endblock %}
