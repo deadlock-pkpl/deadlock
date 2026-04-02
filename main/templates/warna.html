@@ -3,7 +3,7 @@
 {% block content %}
 {% include 'navbar.html' %}
 
-<main class="min-h-screen bg-stone-50 py-16 px-4 transition-colors duration-500">
+<main class="theme-main min-h-screen py-16 px-4 transition-colors duration-500">
   <!-- Page Header -->
   <div class="max-w-2xl mx-auto text-center mb-12">
     <p class="text-xs tracking-widest uppercase text-stone-400 mb-2">Kelompok Deadlock · 2026</p>
@@ -73,61 +73,93 @@
 </main>
 
 <script>
-  // Fungsi untuk memperbarui tampilan border tombol yang aktif
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
   function updateActiveButtonBorder(selectedHex) {
     const allCards = document.querySelectorAll('.color-card');
-    
+
     allCards.forEach(card => {
       const cardHex = card.getAttribute('data-hex');
-      
       if (cardHex === selectedHex) {
-        // Jika ini tombol yang dipilih, tebalkan bordernya
         card.classList.remove('border-stone-100');
         card.classList.add('border-stone-800', 'ring-1', 'ring-stone-800');
       } else {
-        // Jika bukan, kembalikan ke border tipis
         card.classList.remove('border-stone-800', 'ring-1', 'ring-stone-800');
         card.classList.add('border-stone-100');
       }
     });
   }
 
-  function setColor(hex, name) {
-    // 1. Terapkan warna ke main
-    const mainArea = document.querySelector('main');
-    if (mainArea) {
-      mainArea.style.backgroundColor = hex;
-      mainArea.classList.remove('bg-stone-50');
-    }
-    
-    // 2. Simpan ke Memori Browser
-    localStorage.setItem('selectedColor', hex);
-    
-    // 3. Update Border Tombol
-    updateActiveButtonBorder(hex);
+  async function setColor(hex, name) {
+    const res = await fetch("{% url 'main:save_theme' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: JSON.stringify({
+        bg_color: hex
+      })
+    });
 
-    // 4. Feedback Message
-    const statusMsg = document.getElementById('statusMsg');
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "Gagal menyimpan warna");
+      return;
+    }
+
+    const mainArea = document.querySelector("main");
+    if (mainArea) {
+      mainArea.style.backgroundColor = data.bg_color;
+    }
+
+    updateActiveButtonBorder(data.bg_color);
+
+    const statusMsg = document.getElementById("statusMsg");
     statusMsg.innerText = "Tema " + name + " diterapkan";
     statusMsg.style.opacity = "1";
     setTimeout(() => { statusMsg.style.opacity = "0"; }, 2000);
   }
 
-  function resetColor() {
-    localStorage.removeItem('selectedColor');
-    // Berikan parameter reset agar border balik ke tombol default
-    updateActiveButtonBorder('reset');
+  async function resetColor() {
+    const res = await fetch("{% url 'main:save_theme' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: JSON.stringify({
+        bg_color: "#fafaf9"
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "Gagal reset warna");
+      return;
+    }
+
+    updateActiveButtonBorder("reset");
     location.reload();
   }
 
-  // SAAT HALAMAN DIBUKA: Cek warna mana yang sedang aktif
-  document.addEventListener('DOMContentLoaded', () => {
-    const savedColor = localStorage.getItem('selectedColor');
-    if (savedColor) {
-      updateActiveButtonBorder(savedColor);
-    } else {
-      updateActiveButtonBorder('reset');
-    }
+  document.addEventListener("DOMContentLoaded", () => {
+    updateActiveButtonBorder("{{ theme.bg_color }}");
   });
 </script>
 

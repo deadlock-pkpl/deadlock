@@ -10,4 +10,5 @@ urlpatterns = [
     path('auth/logout/', views.logout_view, name='logout'),
     path('auth/warna/', views.change_colour, name='change_colour'),
     path('auth/font/', views.change_font, name='change_font'),
+    path('auth/theme/save/', views.save_theme, name='save_theme'),
 ]

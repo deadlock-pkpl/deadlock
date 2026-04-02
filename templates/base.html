@@ -7,49 +7,32 @@
     <title>{% block title %}Kelompok 4{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Menambahkan daftar font lengkap agar bisa diakses di semua halaman -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Dancing+Script&family=Playfair+Display&family=Montserrat&family=Lora&family=Oswald&family=Raleway&family=Merriweather&family=Poppins&family=Ubuntu&family=Cinzel&family=Caveat&family=Abril+Fatface&display=swap" rel="stylesheet">
 
-    <script>
-        function applySavedSettings() {
-            const savedFont = localStorage.getItem('selectedFont');
-            const savedColor = localStorage.getItem('selectedColor');
-
-            if (savedFont) {
-                document.documentElement.style.fontFamily = savedFont;
-                document.body.style.fontFamily = savedFont;
-            }
-
-            if (savedColor) {
-                
-                const checkMain = setInterval(() => {
-                    const mainEl = document.querySelector('main');
-                    if (mainEl) {
-                        mainEl.style.backgroundColor = savedColor;
-                        mainEl.classList.remove('bg-stone-50', 'bg-white');
-                        clearInterval(checkMain);
-                    }
-                }, 10);
-                
-                setTimeout(() => clearInterval(checkMain), 2000);
-            }
+    <style>
+        :root {
+            --site-font: {{ theme.font_family|default:"'DM Sans', sans-serif"|safe }};
+            --site-bg: {{ theme.bg_color|default:"#fafaf9" }};
         }
 
-      
-        document.addEventListener('DOMContentLoaded', applySavedSettings);
-    </script>
+        body {
+            font-family: var(--site-font);
+        }
 
-    <style>
-        body, main {
+        .theme-main {
+            background-color: var(--site-bg);
+        }
+
+        body, .theme-main {
             transition: background-color 0.5s ease, font-family 0.3s ease;
         }
     </style>
 
-    {% block meta %} {% endblock meta %}
+    {% block meta %}{% endblock meta %}
 </head>
 
 <body class="antialiased text-stone-800">
-    {% block content %} 
+    {% block content %}
     {% endblock content %}
 </body>
 </html>

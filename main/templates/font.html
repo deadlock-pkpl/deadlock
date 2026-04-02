@@ -6,7 +6,7 @@
 <!-- Memuat Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&family=Montserrat&family=Lora&family=Oswald&family=Raleway&family=Merriweather&family=Poppins&family=Ubuntu&family=Cinzel&family=Caveat&family=Abril+Fatface&display=swap" rel="stylesheet">
 
-<main class="min-h-screen bg-stone-50 py-16 px-4">
+<main class="theme-main min-h-screen py-16 px-4">
   <div class="max-w-2xl mx-auto text-center mb-12">
     <h1 class="text-4xl text-stone-800 mb-2" style="font-family: 'DM Serif Display', serif;">Pilih Font</h1>
     <p class="text-sm text-stone-400">Klik pada kotak untuk mengubah font seluruh website</p>
@@ -41,12 +41,62 @@
 </main>
 
 <script>
-  function setFont(fontName) {
-    localStorage.setItem('selectedFont', fontName);
-    document.body.style.fontFamily = fontName;
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
   }
-  function resetSettings() {
-    localStorage.removeItem('selectedFont');
+
+  async function setFont(fontName) {
+    const res = await fetch("{% url 'main:save_theme' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: JSON.stringify({
+        font_family: fontName
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "Gagal menyimpan font");
+      return;
+    }
+
+    document.body.style.fontFamily = data.font_family;
+  }
+
+  async function resetSettings() {
+    const res = await fetch("{% url 'main:save_theme' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: JSON.stringify({
+        font_family: "'DM Sans', sans-serif"
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "Gagal reset font");
+      return;
+    }
+
     location.reload();
   }
 </script>

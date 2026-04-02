@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Biodata Kelompok{% endblock %}
 {% block content %}
 {% include 'navbar.html' %}
 
-<!-- 1. Menghapus inline font-family agar bisa berubah otomatis mengikuti pilihan user -->
-<main class="min-h-screen bg-stone-50 py-16 px-4 transition-all duration-500">
+<main class="theme-main min-h-screen py-16 px-4 transition-all duration-500">
 
-  <!-- Page Header -->
   <div class="max-w-2xl mx-auto text-center mb-12">
     <p class="text-xs tracking-widest uppercase text-stone-400 mb-2">Kelompok Deadlock · 2026</p>
-    <!-- Judul utama dibiarkan menggunakan DM Serif agar tetap estetik sebagai identitas -->
     <h1 class="text-4xl text-stone-800 mb-2" style="font-family: 'DM Serif Display', serif; font-weight: 400;">
       Biodata Anggota
     </h1>
@@ -17,29 +15,43 @@
     <div class="w-10 h-px bg-stone-300 mx-auto mt-4"></div>
   </div>
 
-  <!-- Cards Container -->
+  {% if user.is_authenticated and not is_member %}
+    <div class="max-w-2xl mx-auto mb-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 shadow-sm">
+      Anda login dengan email <span class="font-semibold">{{ user.email }}</span>, tetapi email ini bukan akun anggota kelompok, sehingga hanya memiliki akses lihat.
+    </div>
+  {% endif %}
+
   <div class="max-w-2xl mx-auto flex flex-col gap-4">
 
     <!-- Card 1: Rayyan Emir Muhammad -->
     <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
-      <div class="w-13 h-13 rounded-full bg-violet-50 flex items-center justify-center text-violet-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        RM
-      </div>
+      <img
+        src="{% static 'images/rayyan.webp' %}"
+        alt="Foto Rayyan Emir Muhammad"
+        class="w-[100px] h-[100px] rounded-full object-cover border border-stone-200 shadow-sm flex-shrink-0"
+        width="52"
+        height="52"
+        loading="lazy"
+        decoding="async"
+      >
+
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Rayyan Emir Muhammad</span>
         </div>
         <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Ketua Kelompok</p>
+
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
-            <span class="text-[13px] text-stone-700">Jakarta</span>
+            <span class="text-[11px] text-stone-400 tracking-wide">NPM</span>
+            <span class="text-[13px] text-stone-700 break-all">2406345375</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">rayyan.emir@ui.ac.id</span>
+            <span class="text-[13px] text-stone-700 break-all">rayyan.emir@ui.ac.id</span>
           </div>
         </div>
+
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Machine Learning</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Python</span>
@@ -49,24 +61,33 @@
 
     <!-- Card 2: Angga Tri Setiawan -->
     <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
-      <div class="w-13 h-13 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        AS
-      </div>
+      <img
+        src="{% static 'images/angga.webp' %}"
+        alt="Foto Angga Tri Setiawan"
+        class="w-[100px] h-[100px] rounded-full object-cover border border-stone-200 shadow-sm flex-shrink-0"
+        width="52"
+        height="52"
+        loading="lazy"
+        decoding="async"
+      >
+
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Angga Tri Setiawan</span>
         </div>
         <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
+
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
-            <span class="text-[13px] text-stone-700">Sulawesi Tenggara</span>
+            <span class="text-[11px] text-stone-400 tracking-wide">NPM</span>
+            <span class="text-[13px] text-stone-700 break-all">2406350614</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">angga.tri41@ui.ac.id</span>
+            <span class="text-[13px] text-stone-700 break-all">angga.tri41@ui.ac.id</span>
           </div>
         </div>
+
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Frontend</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Cyber Security</span>
@@ -74,26 +95,35 @@
       </div>
     </div>
 
-    <!-- Card 3: Philo Pradipta -->
+    <!-- Card 3: Philo Pradipta Adhi Satriya -->
     <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
-      <div class="w-13 h-13 rounded-full bg-orange-50 flex items-center justify-center text-orange-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        PP
-      </div>
+      <img
+        src="{% static 'images/philo.webp' %}"
+        alt="Foto Philo Pradipta Adhi Satriya"
+        class="w-[100px] h-[100px] rounded-full object-cover border border-stone-200 shadow-sm flex-shrink-0"
+        width="52"
+        height="52"
+        loading="lazy"
+        decoding="async"
+      >
+
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Philo Pradipta Adhi Satriya</span>
         </div>
         <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
+
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
-            <span class="text-[13px] text-stone-700">Surabaya</span>
+            <span class="text-[11px] text-stone-400 tracking-wide">NPM</span>
+            <span class="text-[13px] text-stone-700 break-all">2406495426</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">philo.pradipta41@ui.ac.id</span>
+            <span class="text-[13px] text-stone-700 break-all">philo.pradipta41@ui.ac.id</span>
           </div>
         </div>
+
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Backend</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Node.js</span>
@@ -101,26 +131,35 @@
       </div>
     </div>
 
-    <!-- Card 4: Raihan Maulana -->
+    <!-- Card 4: Raihan Maulana Heriandry -->
     <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
-      <div class="w-13 h-13 rounded-full bg-pink-50 flex items-center justify-center text-pink-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        RM
-      </div>
+      <img
+        src="{% static 'images/raihan.webp' %}"
+        alt="Foto Raihan Maulana Heriandry"
+        class="w-[100px] h-[100px] rounded-full object-cover border border-stone-200 shadow-sm flex-shrink-0"
+        width="52"
+        height="52"
+        loading="lazy"
+        decoding="async"
+      >
+
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Raihan Maulana Heriandry</span>
         </div>
         <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
+
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
-            <span class="text-[13px] text-stone-700">Wonosobo</span>
+            <span class="text-[11px] text-stone-400 tracking-wide">NPM</span>
+            <span class="text-[13px] text-stone-700 break-all">2406351024</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">raihan.maulana41@ui.ac.id</span>
+            <span class="text-[13px] text-stone-700 break-all">raihan.maulana41@ui.ac.id</span>
           </div>
         </div>
+
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Mobile Dev</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Flutter</span>
@@ -128,26 +167,35 @@
       </div>
     </div>
 
-    <!-- Card 5: Zakiy Nashrudin -->
+    <!-- Card 5: Zakiy Nashrudin Wahid -->
     <div class="bg-white border border-stone-100 rounded-2xl p-5 flex gap-4 items-start hover:border-stone-300 transition-colors duration-200 shadow-sm">
-      <div class="w-13 h-13 rounded-full bg-sky-50 flex items-center justify-center text-sky-700 text-sm font-medium flex-shrink-0" style="width:52px;height:52px;font-family:'DM Serif Display',serif;font-style:italic;">
-        ZN
-      </div>
+      <img
+        src="{% static 'images/zakiy.webp' %}"
+        alt="Foto Zakiy Nashrudin Wahid"
+        class="w-[100px] h-[100px] rounded-full object-cover border border-stone-200 shadow-sm flex-shrink-0"
+        width="52"
+        height="52"
+        loading="lazy"
+        decoding="async"
+      >
+
       <div class="flex-1 min-w-0">
         <div class="flex items-start justify-between gap-2 mb-1">
           <span class="text-[15px] font-medium text-stone-800">Zakiy Nashrudin Wahid</span>
         </div>
         <p class="text-xs text-stone-400 mb-3 uppercase tracking-wider font-semibold">Anggota</p>
+
         <div class="flex gap-8 flex-wrap mb-3">
           <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] text-stone-400 tracking-wide">Asal</span>
-            <span class="text-[13px] text-stone-700">Semarang</span>
+            <span class="text-[11px] text-stone-400 tracking-wide">NPM</span>
+            <span class="text-[13px] text-stone-700 break-all">2406496044</span>
           </div>
           <div class="flex flex-col gap-0.5">
             <span class="text-[11px] text-stone-400 tracking-wide">Email</span>
-            <span class="text-[13px] text-stone-700">zakiy.nashrudin@ui.ac.id</span>
+            <span class="text-[13px] text-stone-700 break-all">zakiy.nashrudin@ui.ac.id</span>
           </div>
         </div>
+
         <div class="border-t border-stone-100 pt-3 flex gap-2 flex-wrap">
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Backend</span>
           <span class="text-[11px] text-stone-500 bg-stone-50 border border-stone-100 rounded-full px-3 py-1">Game Developer</span>
