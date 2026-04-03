@@ -27,6 +27,8 @@ pip install -r requirements.txt
 
 ### 4. Buat file .env di root project, lalu isi dengan format berikut:
 ``` bash
+PRODUCTION=False
+
 GOOGLE_CLIENT_ID=your_google_client_id_here
 GOOGLE_CLIENT_SECRET=your_google_client_secret_here
 GOOGLE_REDIRECT_URI=http://localhost:8000/auth/callback/
