@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 
 ### 4. Buat file .env di root project, lalu isi dengan format berikut:
-``` bash
+``` env 
 PRODUCTION=False
 
 GOOGLE_CLIENT_ID=your_google_client_id_here
@@ -36,7 +36,7 @@ GROUP_MEMBERS=rayyan.emir@ui.ac.id,angga.tri41@ui.ac.id,philo.pradipta41@ui.ac.i
 ```
 
 ## Catatan
-contoh@gmail.com, contohlagi@gmail.com hanya berupa contoh/test user.
+contoh@gmail.com, contohlagi@gmail.com hanya berupa contoh dan dapat diganti dengan email tester jika pengujian fitur ingin dilakukan.
 
 ### 5. Jalankan migrasi database
 ``` bash
