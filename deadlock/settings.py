@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-e)maf!mvr5-ig4yvkddoq)+xv=tw7dkfl@(cdw(b0fxj%_&qkm
 
 # SECURITY WARNING: don't run with debug turned on in production!
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
-DEBUG = True
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
@@ -128,15 +128,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Authorization Access
 GROUP_MEMBERS = [
-    "angga.tri41@ui.ac.id",
-    "rayyan.emir@ui.ac.id",
-    "philo.pradipta41@ui.ac.id",
-    "raihan.maulana41@ui.ac.id",
-    "zakiy.nashrudin@ui.ac.id",
+    email.strip()
+    for email in os.getenv("GROUP_MEMBERS", "").split(",")
+    if email.strip()
 ]
 
-# deadlock/settings.py
+# Google Credentials
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI")

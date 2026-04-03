@@ -33,6 +33,9 @@ GOOGLE_REDIRECT_URI=http://localhost:8000/auth/callback/
 GROUP_MEMBERS=rayyan.emir@ui.ac.id,angga.tri41@ui.ac.id,philo.pradipta41@ui.ac.id,raihan.maulana41@ui.ac.id,zakiy.nashrudin@ui.ac.id,contoh@gmail.com,contohlagi@gmail.com
 ```
 
+## Catatan
+contoh@gmail.com, contohlagi@gmail.com hanya berupa contoh/test user.
+
 ### 5. Jalankan migrasi database
 ``` bash
 python manage.py makemigrations
