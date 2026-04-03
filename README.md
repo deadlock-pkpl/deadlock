@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 
 ### 4. Buat file .env di root project, lalu isi dengan format berikut:
-``` env 
+```env 
 PRODUCTION=False
 
 GOOGLE_CLIENT_ID=your_google_client_id_here
@@ -35,25 +35,31 @@ GOOGLE_REDIRECT_URI=http://localhost:8000/auth/callback/
 GROUP_MEMBERS=rayyan.emir@ui.ac.id,angga.tri41@ui.ac.id,philo.pradipta41@ui.ac.id,raihan.maulana41@ui.ac.id,zakiy.nashrudin@ui.ac.id,contoh@gmail.com,contohlagi@gmail.com
 ```
 
-## Catatan
-contoh@gmail.com, contohlagi@gmail.com hanya berupa contoh dan dapat diganti dengan email tester jika pengujian fitur ingin dilakukan.
+## Keterangan
+contoh@gmail.com dan contohlagi@gmail.com hanya berupa contoh dan dapat diganti dengan email tester jika pengujian fitur ingin dilakukan.
 
 ### 5. Jalankan migrasi database
-``` bash
+```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 ### 6. Jalankan server
-``` bash
+```bash
 python manage.py runserver
 ```
 
 ### 7. Buka di browser
-``` bash
+```txt
 http://localhost:8000
+```
+### Atau 
+```txt
+http://127.0.0.1:8000
 ```
 
 ## Catatan
 - Credential asli tidak disertakan di repository publik.
 - Credential testing diberikan secara privat pada berkas submission.
+- `GOOGLE_REDIRECT_URI` pada template sudah sesuai dan tidak perlu diubah selama aplikasi dijalankan di `http://localhost:8000` atau `http://127.0.0.1:8000`.
+- Jika OAuth Google masih dalam mode testing, email penguji harus ditambahkan ke daftar **Test Users** agar login dapat berhasil.
