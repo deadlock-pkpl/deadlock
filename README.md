@@ -65,4 +65,3 @@ http://127.0.0.1:8000
 ## Catatan
 - Credential asli tidak disertakan di repository publik.
 - Credential testing diberikan secara privat pada berkas submission.
-- Jika OAuth Google masih dalam mode testing, email penguji harus ditambahkan ke daftar **Test Users** agar login dapat berhasil.
