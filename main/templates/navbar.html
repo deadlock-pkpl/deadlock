@@ -13,15 +13,11 @@
 
     <!-- Nav Links (desktop) -->
     <div class="hidden sm:flex items-center gap-6">
-      <!-- Beranda: Sekarang pake class nav-link dan data-path -->
       <a href="/" class="nav-link text-[13px] text-stone-400 hover:text-stone-700 transition-colors no-underline" data-path="/">Beranda</a>
 
       {% if user.is_authenticated %}
         {% if is_member %}
-          <!-- Font: Tambahkan class nav-link dan data-path -->
           <a href="{% url 'main:change_font' %}" class="nav-link text-[13px] text-stone-400 hover:text-stone-700 no-underline" data-path="{% url 'main:change_font' %}">Ubah Font</a>
-          
-          <!-- Warna: Tambahkan class nav-link dan data-path -->
           <a href="{% url 'main:change_colour' %}" class="nav-link text-[13px] text-stone-400 hover:text-stone-700 no-underline" data-path="{% url 'main:change_colour' %}">Ubah Warna</a>
         {% endif %}
         
@@ -79,7 +75,7 @@
   function setActiveNavLink() {
     let currentPath = window.location.pathname;
     
-    // Normalisasi path: hapus slash di akhir kecuali untuk root '/'
+    // Normalisasi path
     if (currentPath !== '/' && currentPath.endsWith('/')) {
       currentPath = currentPath.slice(0, -1);
     }

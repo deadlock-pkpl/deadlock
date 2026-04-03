@@ -28,7 +28,7 @@ ALLOWED_FONTS = {
     "'Montserrat', sans-serif",
     "'Caveat', cursive",
     "'Oswald', sans-serif",
-    "'DM Sans', sans-serif",   # default
+    "'DM Sans', sans-serif",   # Default
 }
 
 def build_context(request):
