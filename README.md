@@ -9,19 +9,19 @@ cd <NAMA_FOLDER_PROJECT>
 ### 2. Buat dan aktifkan virtual environment
 
 Windows
-``` bash
+```bash
 python -m venv env
 env\Scripts\activate
 ```
 
 MacOS / Linux
-``` bash
+```bash
 python3 -m venv env
 source env/bin/activate
 ```
 
 ### 3. Install dependency
-``` bash
+```bash
 pip install -r requirements.txt
 ```
 
@@ -36,7 +36,11 @@ GROUP_MEMBERS=rayyan.emir@ui.ac.id,angga.tri41@ui.ac.id,philo.pradipta41@ui.ac.i
 ```
 
 ## Keterangan
-contoh@gmail.com dan contohlagi@gmail.com hanya berupa contoh dan dapat diganti dengan email tester jika pengujian fitur ingin dilakukan.
+- contoh@gmail.com dan contohlagi@gmail.com hanya berupa contoh dan dapat diganti dengan email tester jika pengujian fitur ingin dilakukan.
+- Jika aplikasi dijalankan di `http://localhost:8000`, gunakan:
+  `GOOGLE_REDIRECT_URI=http://localhost:8000/auth/callback/`
+- Jika aplikasi dijalankan di `http://127.0.0.1:8000`, gunakan:
+  `GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/callback/`
 
 ### 5. Jalankan migrasi database
 ```bash
@@ -53,7 +57,7 @@ python manage.py runserver
 ```txt
 http://localhost:8000
 ```
-### Atau 
+### Alternatif 
 ```txt
 http://127.0.0.1:8000
 ```
@@ -61,5 +65,4 @@ http://127.0.0.1:8000
 ## Catatan
 - Credential asli tidak disertakan di repository publik.
 - Credential testing diberikan secara privat pada berkas submission.
-- `GOOGLE_REDIRECT_URI` pada template sudah sesuai dan tidak perlu diubah selama aplikasi dijalankan di `http://localhost:8000` atau `http://127.0.0.1:8000`.
 - Jika OAuth Google masih dalam mode testing, email penguji harus ditambahkan ke daftar **Test Users** agar login dapat berhasil.
