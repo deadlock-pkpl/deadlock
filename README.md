@@ -1,18 +1,8 @@
-
-
-
-
-## Requirement
-Pastikan sudah terinstall:
-- Python 3.x
-- pip
-- virtual environment (disarankan)
-
 ## Cara Menjalankan Secara Lokal
 
 ### 1. Clone repository
 ```bash
-git clone <URL_REPOSITORY_KAMU>
+git clone <URL_REPOSITORY>
 cd <NAMA_FOLDER_PROJECT>
 ```
 
@@ -60,5 +50,5 @@ http://localhost:8000
 ```
 
 ## Catatan
-Credential asli tidak disertakan di repository publik.
-Credential testing diberikan secara privat pada berkas submission.
+- Credential asli tidak disertakan di repository publik.
+- Credential testing diberikan secara privat pada berkas submission.
